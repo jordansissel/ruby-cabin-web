@@ -1,0 +1,30 @@
+PATH
+  remote: .
+  specs:
+    cabin-web (0.0.1)
+      cabin
+      ftw
+      json
+      sinatra
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    cabin (0.4.3)
+      json
+    ftw (0.0.8)
+    json (1.6.5)
+    rack (1.4.1)
+    rack-protection (1.2.0)
+      rack
+    sinatra (1.3.2)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    tilt (1.3.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cabin-web!
