@@ -21,10 +21,6 @@ class Cabin::Web::Logs < Sinatra::Base
     @channel.info("Unsubscribing websocket client")
   end
 
-  get "/logs" do
-    haml :index
-  end # get /
-
   # Make an echo server over websockets.
   get "/logs/stream" do
     websocket = FTW::WebSocket::Rack.new(env)
@@ -32,5 +28,25 @@ class Cabin::Web::Logs < Sinatra::Base
       subscribe(websocket)
     end
     websocket.rack_response
-  end # get /websocket
+  end # get /logs/stream
+
+  get "/logs/js/*" do
+    p :splat => params[:splat]
+    static("/js/#{params[:splat].first}")
+  end # get /logs/js/*
+
+  get "/logs/?" do
+    haml :index
+  end
+
+  helpers do
+    def static(path)
+      publicdir = File.join(File.dirname(__FILE__), "public")
+      fullpath = File.expand_path(File.join(publicdir, path))
+      if !fullpath.start_with?(publicdir)
+        return [400, {}, "Bad path: #{path}"]
+      end
+      send_file(fullpath)
+    end
+  end
 end # class Cabin::Web::Logs

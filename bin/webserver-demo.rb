@@ -1,5 +1,6 @@
 require "sinatra/base"
-$:.unshift File.join(File.dirname(__FILE__), "lib")
+
+$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require "ftw/websocket/rack"
 require "cabin"
 require "cabin/web/logs"
