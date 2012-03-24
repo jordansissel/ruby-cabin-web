@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     cabin-web (0.0.1)
-      cabin
-      ftw (~> 0.0.10)
+      cabin (~> 0.4.4)
+      ftw (~> 0.0.11)
       haml
       json
       sinatra
@@ -15,7 +15,7 @@ GEM
     backports (2.3.0)
     cabin (0.4.4)
       json
-    ftw (0.0.10)
+    ftw (0.0.11)
       addressable (= 2.2.6)
       backports (= 2.3.0)
       cabin (> 0)
@@ -23,7 +23,9 @@ GEM
       json (= 1.6.5)
       minitest (> 0)
     haml (3.1.4)
+    http_parser.rb (0.5.3)
     http_parser.rb (0.5.3-java)
+    json (1.6.5)
     json (1.6.5-java)
     minitest (2.11.4)
     rack (1.4.1)
