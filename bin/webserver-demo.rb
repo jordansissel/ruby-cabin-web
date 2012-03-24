@@ -23,7 +23,6 @@ end
 
 class Example < Sinatra::Base
   get "/" do
-    p logger
     Cabin::Channel.get.info("Get on /", :params => params)
     'Hello'
   end
@@ -50,6 +49,15 @@ class App < Sinatra::Base
   helpers do
     def logger
       request.logger
+    end
+  end
+end
+
+1.times do
+  Thread.new(Cabin::Channel.get("ok")) do |channel|
+    loop do
+      channel.info("Foo", :data => "x" * rand(50))
+      sleep 0.3
     end
   end
 end

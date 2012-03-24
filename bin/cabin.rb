@@ -7,6 +7,7 @@ agent = FTW::Agent.new
 ws = agent.websocket!("http://localhost:8080/logs/stream")
 
 ws.each do |event|
-  obj = JSON.parse(event)
-  p obj
+  puts event.inspect
+  #obj = JSON.parse(event)
+  #p obj
 end
