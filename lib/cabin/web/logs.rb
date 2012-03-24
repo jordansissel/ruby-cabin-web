@@ -1,5 +1,6 @@
 require "sinatra/base"
 require "cabin"
+require "haml"
 
 module Cabin::Web; end
 class Cabin::Web::Logs < Sinatra::Base
@@ -49,8 +50,13 @@ class Cabin::Web::Logs < Sinatra::Base
         message = queue.pop
         begin
           websocket.publish(message.to_json)
-        rescue Errno::EPIPE, Errno::ECONNRESET
-          # finish since the client died or went away
+        rescue Errno::EPIPE, Errno::ECONNRESET, SystemCallError
+          # JRuby tosses this instead of Errno::EPIPE:
+          #   #<SystemCallError: Unknown error - Broken pipe>
+          #   org/jruby/RubyIO.java:1291:in `syswrite'
+          #
+          # If we get here, there was an error writing to the receiver. 
+          # This connection's dead and gone, so return.
           return
         end
       end
