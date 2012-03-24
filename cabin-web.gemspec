@@ -9,10 +9,11 @@ Gem::Specification.new do |spec|
   spec.email = ["jls@semicomplete.com"]
   spec.homepage = "https://github.com/jordansissel/ruby-cabin-web"
 
-  spec.add_dependency("cabin")
+  spec.add_dependency("cabin", "~> 0.4.4")
   spec.add_dependency("json")
   spec.add_dependency("sinatra")
-  spec.add_dependency("ftw")
+  spec.add_dependency("ftw", "~> 0.0.11")
+  spec.add_dependency("haml")
 
   spec.require_paths << "lib"
   spec.bindir = "bin"
