@@ -3,17 +3,29 @@ PATH
   specs:
     cabin-web (0.0.1)
       cabin
-      ftw
+      ftw (~> 0.0.10)
+      haml
       json
       sinatra
 
 GEM
   remote: http://rubygems.org/
   specs:
-    cabin (0.4.3)
+    addressable (2.2.6)
+    backports (2.3.0)
+    cabin (0.4.4)
       json
-    ftw (0.0.8)
-    json (1.6.5)
+    ftw (0.0.10)
+      addressable (= 2.2.6)
+      backports (= 2.3.0)
+      cabin (> 0)
+      http_parser.rb (= 0.5.3)
+      json (= 1.6.5)
+      minitest (> 0)
+    haml (3.1.4)
+    http_parser.rb (0.5.3-java)
+    json (1.6.5-java)
+    minitest (2.11.4)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -24,6 +36,7 @@ GEM
     tilt (1.3.3)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
